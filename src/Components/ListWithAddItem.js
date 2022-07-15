@@ -20,16 +20,19 @@ const ListWithAddItem = () => {
   const handleSubmit = event => {
 
     if (value.length >= 3) {
-      var codes = getPostCodeDetail(value);
-      debugger
+      document.getElementById("divLoader").classList.toggle("loader");
+      var codes = getPostCodeDetail(value);            
       if(codes.length === 0)
       {
         document.getElementById("lblSearchResult").innerHTML = "Invalid passcode";
+        document.getElementById("divLoader").classList.toggle("loader");
       } else {
       codes.then( x=> {
         document.getElementById("lblSearchResult").innerHTML = "About "+ x.length +" result(s)";
-        setList(x);               
+        setList(x);     
+        document.getElementById("divLoader").classList.toggle("loader");          
       })
+      
     }
     } 
     // setValue('');
@@ -42,6 +45,7 @@ const ListWithAddItem = () => {
         <input type="text" minLength={3} value={value} placeholder="Search post code" onChange={handleChange} />        
 
         <button type="submit">Find</button>
+        <div id="divLoader"></div>
         <br />
         <label id='lblSearchResult'></label>
       </form>
