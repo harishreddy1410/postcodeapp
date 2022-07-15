@@ -1,22 +1,13 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root{
+  background-color: #f5fc90;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
+  background-color: #f5fc90;
   min-height: 100vh;
-  display: flex;
+  padding-top: 5pc;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -28,11 +19,57 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input {
+    width: 200px;
+    height: 30px;
+    border-radius: 10px 0px 0px 10px;
+    border-width: 1px;
+}
+button {
+  height: 34px;  
+  border-radius: 0px 10px 10px 0px;
+  border-width: 1px;
+  width:100px;
+  background: black;
+  color: white;
+  font-weight: bold;
+}
+input[type=submit]:hover {
+  cursor: pointer;
+}
+.form-container{
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: left;
+  padding-left: 10px;
+}
+.codeDisplayHolder
+{
+  list-style-type: number;
+  margin-left: 0;
+  padding-left: 10px;
+}
+.codeDisplayHolder li{ 
+  color: black;
+  text-align: left;
+  font-size: 14px;
+  border: solid gray;
+  margin: 2px;
+  border-radius: 8px;
+  border-width: 1px;
+  padding: 8px;
+}
+label{
+  color: gray;
+    font-size: 12px;
+}
+.hidden {
+  display: none;
+}
+.postCodeHeader{
+  cursor: pointer;
+    background: cornsilk;
+}
+.black{
+  color:black;
 }

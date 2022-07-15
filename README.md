@@ -67,4 +67,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Steps : 
+npx create-react-app postcodeapp
+cd postcodeapp
+npm start 
+npm run build
+aws cloudformation deploy --template-file template.yaml --stack-name postcodeuistack --profile developertwo
+
+aws s3 ls --profile developertwo
+aws s3 ls s3://postcode-react-webapp --profile developertwo
+aws s3 cp build/ s3://postcode-react-webapp --recursive --profile developer
+//Added website configuration in aws website 
+aws cloudformation deploy --template-file template.yaml --stack-name postcodeuistack --profile developertwo
+
+//  http://postcode-react-webapp.s3-website.us-east-1.amazonaws.com/
+
+aws s3 rm s3://postcode-react-webapp --recursive --profile developer
+aws cloudformation delete-stack --stack-name postcodeuistack --profile developertwo

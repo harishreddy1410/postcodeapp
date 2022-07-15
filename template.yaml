@@ -1,0 +1,28 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+Description: Post code search web app using reactjs 
+Resources:
+  PostCodeWebAppBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Join [ '-', ['postcode','react','webapp' ] ]
+      AccessControl: PublicRead
+      WebsiteConfiguration:
+        IndexDocument: index.html
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      PolicyDocument:
+        Id: Policy_1
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Join [ '', [ 'arn:aws:s3:::', !Ref PostCodeWebAppBucket, '/*'] ]
+      Bucket: !Ref PostCodeWebAppBucket
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt [PostCodeWebAppBucket, WebsiteURL]
+    Description: Url of the hosted static postcode web app 
