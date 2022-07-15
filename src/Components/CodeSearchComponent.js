@@ -47,7 +47,7 @@ const CodeSearchComponent = () => {
             Country : {item.country} <br /> 
             Region : {item.region} <br /> 
             Admin district : {item.admindistrict} <br /> 
-            Parliamentaryconstituency : {item.parliamentaryconstituency} <br /> 
+            Parliamentary constituency : {item.parliamentaryconstituency} <br /> 
             Area : {item.area}
             </div>
           </li>
