@@ -2,7 +2,7 @@
 This application is reactjs static website hosted on AWS S3 using AWS CLI. This website helps in searching the post codes of United Kingdom using the AWS lambda api's 
 
 ## Steps involved : 
-### npx create-react-app postcodeapp
+### `npx create-react-app postcodeapp`
 ### `cd postcodeapp`
 ### `npm run start`
 ### `npm run build`
