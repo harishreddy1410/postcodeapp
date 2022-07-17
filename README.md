@@ -36,7 +36,7 @@ I have confiured build and deploy command into a single command `npm run deploy`
 // made some code updates and executed the below command to deploy the latest change
 #### `npm run deploy`
 
-To delete the changes made use the below commands 
+To delete the application use the below commands 
 ### `aws s3 rm s3://postcode-react-webapp --recursive --profile developertwo`
 ### `aws cloudformation delete-stack --stack-name postcodeuistack --profile developertwo`
 
