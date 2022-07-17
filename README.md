@@ -3,7 +3,7 @@ This application is reactjs static website hosted on AWS S3 using AWS CLI. This 
 
 ### Pre requisites  
 * AWS Account - free trial is enough
-* AWS cli and Sam cli installed
+* AWS cli installed
 * IDE : VSCode 
 * Dotnet core 3.1 sdk installed 
 * nodejs package installed
