@@ -3,17 +3,20 @@ import getPostCodeDetail from '../api/postcodeapi';
 
 //react class component to handle the call to API and render the UI 
 const CodeSearchComponent = () => {
+  //Variable to hold search keyword
   const [value, setValue] = React.useState('');
+  //variable to hold the result set
   const [list, setList] = React.useState([]);
   
   const handleChange =  event => {
     setValue(event.target.value);
   };
 
+  //Show the loader when user clicks and waits to see results of search 
   const showHide = event => {
     event.target.nextElementSibling.classList.toggle("hidden")
   }
-
+ // Click event when user enters search key word and hits click button 
   const handleSubmit = event => {
       document.getElementById("divLoader").classList.toggle("loader");
       var codes = getPostCodeDetail(value);            
