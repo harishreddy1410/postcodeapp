@@ -1,7 +1,7 @@
 import React from 'react';
 import getPostCodeDetail from '../api/postcodeapi';
 
-
+//react class component to handle the call to API and render the UI 
 const CodeSearchComponent = () => {
   const [value, setValue] = React.useState('');
   const [list, setList] = React.useState([]);
