@@ -1,86 +1,45 @@
-# Getting Started with Create React App
+### About
+This application is reactjs static website hosted on AWS S3 using AWS CLI. This website helps in searching the post codes of United Kingdom using the AWS lambda api's 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Pre requisites  
+* AWS Account - free trial is enough
+* AWS cli installed
+* IDE : VSCode 
+* Dotnet core 3.1 sdk installed 
+* nodejs package installed
+* Optional : Postman for testing API's
 
-## Available Scripts
+### Commands to build, run and deploy
+ * #### start in local using - `npm run start`
+ * #### deploy using - `npm run deploy`
 
-In the project directory, you can run:
+### Steps involved : 
+#### `npx create-react-app postcodeapp`
+#### `cd postcodeapp`
+#### `npm run start`
+#### `npm run build`
+Then made sure my aws profile is configured in my machine. profile named `developertwo`
+Made the required code and UI changes, tested locally, validated the template files and the deployed the changes to AWS. 
 
-### `npm start`
+#### `aws cloudformation deploy --template-file template.yaml --stack-name postcodeuistack --profile developertwo`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Once the stack is deployed, you can verify using the below commands 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### `aws s3 ls --profile developertwo`
+#### `aws s3 ls s3://postcode-react-webapp --profile developertwo`
+#### `aws s3 cp build/ s3://postcode-react-webapp --recursive --profile developertwo`
+ 
+ Open http://postcode-react-webapp.s3-website.us-east-1.amazonaws.com/ in browser to see the website running
+    Note: this url is dependent on the S3 bucket name  
 
-### `npm test`
+I have confiured build and deploy command into a single command `npm run deploy`
+// made some code updates and executed the below command to deploy the latest change
+#### `npm run deploy`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To delete the application use the below commands 
+### `aws s3 rm s3://postcode-react-webapp --recursive --profile developertwo`
+### `aws cloudformation delete-stack --stack-name postcodeuistack --profile developertwo`
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-Steps : 
-npx create-react-app postcodeapp
-cd postcodeapp
-npm start 
-npm run build
-aws cloudformation deploy --template-file template.yaml --stack-name postcodeuistack --profile developertwo
-
-aws s3 ls --profile developertwo
-aws s3 ls s3://postcode-react-webapp --profile developertwo
-aws s3 cp build/ s3://postcode-react-webapp --recursive --profile developer
-//Added website configuration in aws website 
-aws cloudformation deploy --template-file template.yaml --stack-name postcodeuistack --profile developertwo
-
-//  http://postcode-react-webapp.s3-website.us-east-1.amazonaws.com/
-
-aws s3 rm s3://postcode-react-webapp --recursive --profile developer
-aws cloudformation delete-stack --stack-name postcodeuistack --profile developertwo
+## How to apply new modification?
+Make the code changes, save,test and run the below command to deploy the changes
+#### `npm run deploy`
